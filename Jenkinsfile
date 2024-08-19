@@ -16,13 +16,15 @@ pipeline {
                     npm --version
                     npm ci
                     npm run build
+                    ls -la
                 '''
             }
         }
         stage('Test') {
             steps {
                 sh '''
-                    grep build/index.html
+                    echo "Test Stage"
+                    test -f build/index.html
                     npm test
                 '''
             }
